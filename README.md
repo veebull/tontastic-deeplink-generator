@@ -1,8 +1,15 @@
 # TON Deeplink Generator
 
+## Live Demo
+
+Check out the live version of the TON Deeplink Generator:
+
+[TON Deeplink Generator Live Service](https://veebull.github.io/tontastic-deeplink-generator/)
+
 ## Table of Contents
 
 - [TON Deeplink Generator](#ton-deeplink-generator)
+  - [Live Demo](#live-demo)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Features](#features)
