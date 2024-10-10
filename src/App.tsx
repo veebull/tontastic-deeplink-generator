@@ -1,26 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
 
-function App() {
+import { TonDeeplinkGenerator } from './pages/TonDeeplinkGenerator.tsx';
+
+import { ThemeProvider } from '@/components/theme-provider.tsx';
+
+// AppWrapper component with authentication check
+
+// Placeholder component for undefined routes
+const PlaceholderPage: React.FC = () => {
+  const location = useLocation();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='flex flex-col items-center justify-center h-full'>
+      <h1 className='text-2xl font-bold mb-4'>Page Not Found</h1>
+      <p>
+        The page "{location.pathname.split('/').pop()}" is under construction.
+      </p>
     </div>
   );
-}
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+        <div className='min-h-screen w-screen bg-gradient-to-b from-blue-900 to-black p-4'>
+          <Routes>
+            <Route
+              path='/tontastic-deeplink-generator/'
+              element={<TonDeeplinkGenerator />}
+            />
+
+            {/* Placeholder route for undefined paths */}
+            <Route
+              path='/tontastic-deeplink-generator/*'
+              element={<PlaceholderPage />}
+            />
+          </Routes>
+        </div>
+      </ThemeProvider>
+    </Router>
+  );
+};
 
 export default App;
